@@ -1,3 +1,5 @@
+% Illustris Simulation: Public Data Release.
+
 function [result] = loadHalos(basePath,snapNum,fields)
   % LOADHALOS  Load all halo information from the entire group catalog for one snapshot
   %            (optionally restrict to a subset given by fields).

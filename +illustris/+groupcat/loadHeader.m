@@ -6,6 +6,6 @@ function [header] = loadHeader(basePath, snapNum, chunkNum)
     chunkNum = 0;
   end
   
-  filePath = illustris.groupcat.gcPath(basePath,snapNum);
+  filePath = illustris.groupcat.gcPath(basePath,snapNum,chunkNum);
   header = illustris.hdf5_all_attrs(filePath, 'Header');
 end

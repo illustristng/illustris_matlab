@@ -1,3 +1,5 @@
+% Illustris Simulation: Public Data Release.
+
 function [filePath] = gcPath(basePath,snapNum,chunkNum)
   % GCPATH  Return absolute path to a group catalog HDF5 file (modify as needed).
   if ~exist('chunkNum','var')

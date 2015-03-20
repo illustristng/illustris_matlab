@@ -1,3 +1,5 @@
+% Illustris Simulation: Public Data Release.
+
 function [result] = loadSingle(basePath,snapNum,type,id)
   % LOADSINGLE  Return complete group catalog information for one halo or subhalo.
   import illustris.*

@@ -1,3 +1,5 @@
+% Illustris Simulation: Public Data Release.
+
 function [result] = loadObjects(basePath,snapNum,gName,nName,fields)
   % LOADOBJECTS  Load either halo or subhalo information from the group catalog.
   import illustris.*

@@ -1,3 +1,5 @@
+% Illustris Simulation: Public Data Release.
+
 function [header] = loadHeader(basePath, snapNum, chunkNum)
   % LOADHEADER  Load the group catalog header.
   if ~exist('chunkNum','var')

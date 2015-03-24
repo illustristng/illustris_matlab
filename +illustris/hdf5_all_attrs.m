@@ -1,3 +1,5 @@
+% Illustris Simulation: Public Data Release.
+
 function [s] = hdf5_all_attrs(filePath, gName)
   % HDF5_ALL_ATTRS  Return struct of all group attributes.
   info = h5info(filePath,['/' gName '/']);

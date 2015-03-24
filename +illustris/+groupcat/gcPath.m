@@ -6,7 +6,7 @@ function [filePath] = gcPath(basePath,snapNum,chunkNum)
     chunkNum = 0;
   end
   
-  gcPath = [basePath '/groups_' num2str(snapNum,'%03d') '/'];
+  gcPath = [basePath '/postprocessing/groups_new2/groups_' num2str(snapNum,'%03d') '/']; % TODO
   filePath = [gcPath 'groups_' num2str(snapNum,'%03d')];
   filePath = [filePath '.' num2str(chunkNum) '.hdf5'];
 end

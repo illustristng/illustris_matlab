@@ -1,3 +1,5 @@
+% Illustris Simulation: Public Data Release.
+
 function [names,shapes,types] = hdf5_dset_properties(filePath, gName)
   % HDF5_DSET_PROPERTIES  Return names,lengths and datatypes of all group datasets.
   info = h5info(filePath,['/' gName '/']);

@@ -50,7 +50,6 @@ function [result] = loadSubset(basePath,snapNum,partType,fields,subset)
   [field_names, shapes, types] = hdf5_dset_properties(filePath, gName);
   
   if ~exist('fields','var') || ~numel(fields), fields = field_names;, end
-  %if ~numel(fields), fields = field_names;, end
   
   % make sure fields is not a single element
   if ~isa(fields,'cell'), fields = {fields};, end

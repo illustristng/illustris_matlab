@@ -2,7 +2,11 @@
 
 function [names,shapes,types] = hdf5_dset_properties(filePath, gName)
   % HDF5_DSET_PROPERTIES  Return names,lengths and datatypes of all group datasets.
-  info = h5info(filePath,['/' gName '/']);
+  if exist('gName','var')
+    info = h5info(filePath,['/' gName '/']);
+  else
+    info = h5info(filePath); % root groups
+  end
 
   names  = {};
   shapes = struct;
@@ -15,7 +19,7 @@ function [names,shapes,types] = hdf5_dset_properties(filePath, gName)
     
     % convert HDF5 datatypes to native MATLAB type string
     switch type
-      case 'H5T_IEEE_F32LE'
+      case 'H5T_IEEE_F32LE' 
         typeName = 'single';
       case 'H5T_IEEE_F64LE'
         typeName = 'double';
@@ -23,6 +27,12 @@ function [names,shapes,types] = hdf5_dset_properties(filePath, gName)
         typeName = 'uint32';
       case 'H5T_STD_U64LE'
         typeName = 'uint64';
+      case 'H5T_STD_I64LE'
+        typeName = 'int64';
+      case 'H5T_STD_I16LE'
+        typeName = 'int16';
+      case 'H5T_STD_I32LE'
+        typeName = 'int32';
       otherwise
         error('Unknown HDF5 type [%s]', type)      
     end

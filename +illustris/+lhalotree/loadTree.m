@@ -1,6 +1,6 @@
 % Illustris Simulation: Public Data Release.
 
-function result = loadTree(basePath,snapNum,id,fields,onlyMPB)
+function [result] = loadTree(basePath,snapNum,id,fields,onlyMPB)
   % LOADTREE  Load portion of LHaloTree tree, for a given subhalo, re-arranging into a flat format.
   import illustris.*
   

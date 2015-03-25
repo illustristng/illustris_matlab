@@ -1,6 +1,6 @@
 % Illustris Simulation: Public Data Release.
 
-function numMergers = numMergers(tree,minMassRatio,massPartType,index)
+function [numMergers] = numMergers(tree,minMassRatio,massPartType,index)
   % NUMMERGERS  Calculate the number of mergers in this sub-tree 
   %             (optionally above some mass ratio threshold).
   

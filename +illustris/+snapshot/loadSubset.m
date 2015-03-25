@@ -65,10 +65,7 @@ function [result] = loadSubset(basePath,snapNum,partType,fields,subset)
     
     % replace local length with global
     shape = shapes.(field);
-    
-    if isscalar(shape)
-      shape = [1 shape];
-    end
+    if isscalar(shape), shape = [1 shape];, end
     
     shape(end) = numToRead;
     

@@ -2,6 +2,7 @@
 
 function [result] = loadSingle(basePath,snapNum,type,id)
   % LOADSINGLE  Return complete group catalog information for one halo or subhalo.
+  %             Type should be one of {'halo','group','subhalo','subgroup'}.
   import illustris.*
   
   types = {'halo','group','subhalo','subgroup'};

@@ -1,7 +1,8 @@
 % Illustris Simulation: Public Data Release.
 
-function result = loadTree(basePath,snapNum,id,fields,onlyMPB)
+function [result] = loadTree(basePath,snapNum,id,fields,onlyMPB)
   % LOADTREE  Load portion of Sublink tree, for a given subhalo, in its existing flat format.
+  %           (optionally restricted to a subset fields).
   import illustris.*
   
   if ~exist('onlyMPB','var'), onlyMPB = false;, end

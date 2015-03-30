@@ -102,8 +102,8 @@ function [result] = loadSubset(basePath,snapNum,partType,fields,subset)
       numToReadLocal = numTypeLocal - fileOff + 1;
     end
     
-    disp(['[' num2str(fileNum) '] off=' num2str(fileOff) ' read [' num2str(numToReadLocal) ...
-          '] of [' num2str(numTypeLocal) '] remaining = ' num2str(numToRead-numToReadLocal)])
+    %disp(['[' num2str(fileNum) '] off=' num2str(fileOff) ' read [' num2str(numToReadLocal) ...
+    %      '] of [' num2str(numTypeLocal) '] remaining = ' num2str(numToRead-numToReadLocal)])
     
     % loop over each requested field for this particle type
     for j = 1:numel(fields)

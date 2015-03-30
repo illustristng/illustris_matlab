@@ -1,7 +1,7 @@
 % Illustris Simulation: Public Data Release.
 
 function [result] = loadSubset(basePath,snapNum,partType,fields,subset)
-  % LOADSUBET    Load a subset of fields for all particles/cells of a given partType.
+  % LOADSUBSET    Load a subset of fields for all particles/cells of a given partType.
   %              If offset and length specified, load only that subset of the partType.
   import illustris.*
   

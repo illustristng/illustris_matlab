@@ -17,7 +17,7 @@ function [result] = loadSingle(basePath,snapNum,type,id)
   % load groupcat offsets, calculate target file and offset
   header = groupcat.loadHeader(basePath,snapNum);
   
-  offsets = id - header.(['FileOffsets_' gName]);
+  offsets = int64(id) - header.(['FileOffsets_' gName]);
   fileNum = max( find(offsets >= 0) );
   groupOffset = offsets(fileNum) + 1;
   

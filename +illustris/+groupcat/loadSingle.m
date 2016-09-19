@@ -14,10 +14,19 @@ function [result] = loadSingle(basePath,snapNum,type,id)
   if ismember(type, types(1:2)), gName = 'Group';, end
   if ismember(type, types(3:4)), gName = 'Subhalo';, end
   
-  % load groupcat offsets, calculate target file and offset
-  header = groupcat.loadHeader(basePath,snapNum);
-  
-  offsets = int64(id) - header.(['FileOffsets_' gName]);
+  % load groupcat offsets, calculate target file and offset (old or new format)
+  if strfind(groupcat.gcPath(basePath,snapNum),'fof_subhalo')
+    % use separate 'offsets_nnn.hdf5' files
+    filePath = groupcat.offsetPath(basePath,snapNum);
+    [field_names, shapes, types] = hdf5_dset_properties(filePath, 'FileOffsets');
+    offsets = h5read(filePath, ['/FileOffsets/' gName], 1, shapes.(gName));
+  else
+    % use header of group catalog
+    header = groupcat.loadHeader(basePath,snapNum);
+    offsets = header.(['FileOffsets_' gName]); 
+  end
+
+  offsets = int64(id) - offsets;
   fileNum = max( find(offsets >= 0) );
   groupOffset = offsets(fileNum) + 1;
   

@@ -7,6 +7,6 @@ function [filePath] = snapPath(basePath,snapNum,chunkNum)
   end
   
   snapPath = [basePath '/snapdir_' num2str(snapNum,'%03d') '/'];
-  filePath = [snapPath 'snap_' num2str(snapNum,'%03d')];
-  filePath = [filePath '.' num2str(chunkNum) '.hdf5'];
+  filePath = [snapPath 'snap_' num2str(snapNum,'%03d') '.' num2str(chunkNum) '.hdf5'];
+  filePath = strjoin(filePath,'');
 end

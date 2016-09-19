@@ -1,9 +1,12 @@
 % Illustris Simulation: Public Data Release.
 
-function [result] = loadSubset(basePath,snapNum,partType,fields,subset)
+function [result] = loadSubset(basePath,snapNum,partType,fields,subset,sq)
   % LOADSUBSET    Load a subset of fields for all particles/cells of a given partType.
-  %              If offset and length specified, load only that subset of the partType.
+  %               If offset and length specified, load only that subset of the partType.
+  %               If sq is True (default), return an array instead of a dict if numel(fields)==1.
   import illustris.*
+
+  if ~exist('sq','var'), sq = true;, end
   
   ptNum = partTypeNum(partType);
   gName = ['PartType' num2str(ptNum)];
@@ -31,7 +34,7 @@ function [result] = loadSubset(basePath,snapNum,partType,fields,subset)
   
   result.('count') = numToRead;
   if ~numToRead
-    disp('warning: no particles of requested type, empty return.')
+    %disp('warning: no particles of requested type, empty return.')
     return
   end
   
@@ -82,11 +85,8 @@ function [result] = loadSubset(basePath,snapNum,partType,fields,subset)
     
     % no particles of requested type in this file chunk?
     if ~ismember(gName,hdf5_group_names(filePath))
-      if exist('subset','var')
-        error('Read error: subset read should be contiguous.')
-      end
-      
-      fileNum = fileNum + 1
+      fileNum = fileNum + 1;
+      fileOff = 1;
       continue
     end
     
@@ -136,5 +136,5 @@ function [result] = loadSubset(basePath,snapNum,partType,fields,subset)
   end
   
   % only a single field? then return the array instead of a single item hash
-  if numel(fields) == 1, result = result.(fields{1});, end  
+  if sq & numel(fields) == 1, result = result.(fields{1});, end  
 end

@@ -7,7 +7,10 @@ function [result] = loadTree(basePath,snapNum,id,fields,onlyMPB)
   if ~exist('onlyMPB','var'), onlyMPB = false;, end
 
   % config
-  [TreeFile,TreeIndex,TreeNum] = lhalotree.treeOffsets(basePath, snapNum, id);
+  prefix = '/Offsets/Subhalo_LHaloTree';
+  offFields = {'File','Index','Num'};
+
+  [TreeFile,TreeIndex,TreeNum] = sublink.treeOffsets(basePath, snapNum, id, 'LHaloTree', prefix, offFields);
   
   gName = ['Tree' num2str(TreeNum)]; % group name containing this subhalo
   nRows = -1; % we do not know in advance the size of the tree

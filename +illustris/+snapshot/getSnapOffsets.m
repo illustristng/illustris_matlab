@@ -45,6 +45,7 @@ function result = getSnapOffsets(basePath,snapNum,id,type)
   % old or new format: load the offset (by type) of this group/subgroup within the snapshot
   if strfind(groupcat.gcPath(basePath,snapNum),'fof_subhalo')
     filePath = groupcat.offsetPath(basePath,snapNum);
+    start(end) = id;
     result.('offsetType') = h5read(filePath, ['/' type '/SnapByType'], start, length);
   else
     result.('offsetType') = h5read(filePath, ['/Offsets/' type '_SnapByType'], start, length);

@@ -8,7 +8,6 @@ function [filePath] = gcPath(basePath,snapNum,chunkNum)
   
   gcPath = [basePath '/groups_' num2str(snapNum,'%03d') '/'];
   filePath = [gcPath 'groups_' num2str(snapNum,'%03d') '.' num2str(chunkNum) '.hdf5'];
-  filePath = strjoin(filePath,'');
 
   if exist(filePath,'file')
     return
@@ -16,5 +15,4 @@ function [filePath] = gcPath(basePath,snapNum,chunkNum)
 
   % new path scheme
   filePath = [gcPath 'fof_subhalo_tab_' num2str(snapNum,'%03d') '.' num2str(chunkNum) '.hdf5'];
-  filePath = strjoin(filePath,'');
 end

@@ -17,7 +17,7 @@ function [result] = loadTree(basePath,snapNum,id,fields,onlyMPB,treeName)
   [RowNum,LastProgID,SubhaloID] = sublink.treeOffsets(basePath, snapNum, id, treeName, prefix, offFields);
   
   if RowNum == -1
-    disp('Warning, empty return. Subhalo [%d] not in tree.', id);
+    disp(['Warning, empty return. Subhalo [' num2str(id) '] not in tree.']);
     return
   end
 

@@ -14,7 +14,7 @@ function [off1,off2,off3] = treeOffsets(basePath,snapNum,id,treeName,prefix,offF
     offsetFile = groupcat.offsetPath(basePath,snapNum);
     prefix = ['/Subhalo/' treeName '/'];
 
-    groupOffset = id;
+    groupOffset = double(id + 1);
   else
     % load groupcat chunk offsets from header of first file
     header = groupcat.loadHeader(basePath,snapNum);
@@ -23,7 +23,7 @@ function [off1,off2,off3] = treeOffsets(basePath,snapNum,id,treeName,prefix,offF
     % calculate target groups file chunk which contains this id
     groupFileOffsets = int64(id) - groupFileOffsets;
     fileNum = max(find( groupFileOffsets >= 0 ));
-    groupOffset = double(groupFileOffsets(fileNum) + 1); % double for h5read
+    groupOffset = double(groupFileOffsets(fileNum) + 1); % double-precision for h5read
 
     offsetFile = groupcat.gcPath(basePath,snapNum,fileNum-1);
     % prefix from input

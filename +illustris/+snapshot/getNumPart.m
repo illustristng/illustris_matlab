@@ -2,6 +2,11 @@
 
 function [nPart] = getNumPart(header)
   % GETNUMPART  Calculate number of particles of all types given a snapshot header.
+  if ~ismember(header, 'NumPart_Total_HighWord')
+    nPart = header.('NumPart_Total');
+    return
+  end
+
   nTypes = 6;
   nPart  = zeros([1 nTypes], 'uint64');
   

@@ -9,6 +9,11 @@ function [result] = loadObjects(basePath,snapNum,gName,nName,fields)
   header = hdf5_all_attrs(filePath, 'Header');
 
   result = struct;
+
+  if ~ismember(header,['N' nName '_Total']) && nName == 'subgroups'
+    nName = 'subhalos';
+  end
+
   result.('count') = header.(['N' nName '_Total']);
   
   if ~result.('count')

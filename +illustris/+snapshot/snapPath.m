@@ -8,4 +8,11 @@ function [filePath] = snapPath(basePath,snapNum,chunkNum)
   
   snapPath = [basePath '/snapdir_' num2str(snapNum,'%03d') '/'];
   filePath = [snapPath 'snap_' num2str(snapNum,'%03d') '.' num2str(chunkNum) '.hdf5'];
+
+  if exist(filePath,'file')
+    return
+  end
+
+  % alternative path scheme
+  filePath = [snapPath 'snapshot_' num2str(snapNum,'%03d') '.' num2str(chunkNum) '.hdf5'];
 end

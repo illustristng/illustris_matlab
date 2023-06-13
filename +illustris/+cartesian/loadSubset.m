@@ -1,3 +1,5 @@
+% for THESAN only
+
 function [result] = loadSubset(basePath, cartNum, fields, bbox, sq)
     % Load a subset of fields in the cartesian grids.
     % If bbox is specified, load only that subset of data. bbox should have the 
